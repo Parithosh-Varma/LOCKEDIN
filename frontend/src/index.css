@@ -4,27 +4,6 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --primary: 239 84% 67%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 239 84% 67%;
-    --radius: 0.5rem;
-  }
-
-  .dark {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
     --card: 240 10% 3.9%;
@@ -42,48 +21,33 @@
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
     --ring: 239 84% 67%;
+    --radius: 0.75rem;
   }
-
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground antialiased;
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-  }
-
-  h1, h2, h3, h4 {
-    @apply tracking-tight;
-  }
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground antialiased selection:bg-primary/20 selection:text-primary; font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+  h1,h2,h3,h4 { @apply tracking-tight; }
 }
 
 @layer components {
   .card {
-    @apply border border-border bg-card text-card-foreground rounded-lg p-6 shadow-sm;
+    @apply relative rounded-[1rem] border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] backdrop-blur-xl p-6 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.6)] hover:shadow-[0_20px_40px_-12px_rgba(0,0,0,0.7)] transition-shadow;
   }
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all active:scale-[0.98];
   }
   .btn-primary {
-    @apply btn bg-primary text-primary-foreground hover:opacity-90;
+    @apply btn bg-[linear-gradient(135deg,#6366f1,#8b5cf6)] text-white shadow-[0_8px_20px_-8px_rgba(99,102,241,0.65)] hover:brightness-[1.05];
   }
   .btn-outline {
-    @apply btn border border-border bg-background hover:bg-muted text-foreground;
+    @apply btn border border-white/15 bg-white/5 hover:bg-white/10 text-white;
   }
   .btn-ghost {
-    @apply btn hover:bg-muted text-foreground;
-  }
-  .btn-destructive {
-    @apply btn bg-destructive text-destructive-foreground hover:opacity-90;
+    @apply btn text-white/80 hover:text-white hover:bg-white/10;
   }
   .input {
-    @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50;
+    @apply w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-primary/50;
   }
   .label {
-    @apply text-sm font-medium leading-none;
-  }
-  .badge {
-    @apply inline-flex items-center rounded-full border border-border px-2.5 py-0.5 text-xs font-medium;
+    @apply text-xs uppercase tracking-widest text-white/60 font-medium mb-2 block;
   }
 }
