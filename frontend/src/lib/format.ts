@@ -16,13 +16,17 @@ export function fmtDuration(totalMinutes: number): string {
   return `${h}h ${m}m`;
 }
 
-export function fmtTime(d: string | Date): string {
+export function fmtTime(d: string | Date | null | undefined): string {
+  if (!d) return "—";
   const x = typeof d === "string" ? new Date(d) : d;
+  if (isNaN(x.getTime())) return "—";
   return x.toLocaleTimeString("en-IN", { hour: "numeric", minute: "2-digit", hour12: true });
 }
 
-export function fmtDate(d: string | Date): string {
+export function fmtDate(d: string | Date | null | undefined): string {
+  if (!d) return "—";
   const x = typeof d === "string" ? new Date(d) : d;
+  if (isNaN(x.getTime())) return "—";
   return x.toLocaleDateString("en-IN", { weekday: "short", day: "numeric", month: "short" });
 }
 

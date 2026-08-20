@@ -63,8 +63,12 @@ export default function App() {
   const { ready } = useAuth();
   if (!ready) return null;
   return (
-    <div className="min-h-screen bg-[#050507] text-white">
-      <div className="absolute inset-0 -z-10">
+    <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+      <div className="min-h-screen bg-[#050507] text-white">
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_0%,rgba(99,102,241,0.25),transparent_60%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(40%_40%_at_80%_80%,rgba(139,92,246,0.18),transparent_60%)]" />
+        </div>
         <div className="absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_0%,rgba(99,102,241,0.25),transparent_60%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(40%_40%_at_80%_80%,rgba(139,92,246,0.18),transparent_60%)]" />
       </div>
