@@ -1,6 +1,5 @@
-import { NavLink, Route, Routes } from "react-router-dom";
+import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
 import { useAuth } from "./context/auth";
-import { useTheme } from "./context/theme";
 import { IconDashboard, IconCalendar, IconTimer, IconBook, IconChart, IconActivity, IconHistory, IconSend, IconCloud, IconSettings, IconLock, IconGithub } from "./lib/icons";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
@@ -69,28 +68,26 @@ export default function App() {
           <div className="absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_0%,rgba(99,102,241,0.25),transparent_60%)]" />
           <div className="absolute inset-0 bg-[radial-gradient(40%_40%_at_80%_80%,rgba(139,92,246,0.18),transparent_60%)]" />
         </div>
-        <div className="absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_0%,rgba(99,102,241,0.25),transparent_60%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(40%_40%_at_80%_80%,rgba(139,92,246,0.18),transparent_60%)]" />
+        <div className="flex">
+          <Sidebar />
+          <main className="flex-1 min-w-0 px-6 md:px-10 py-8">
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/schedule" element={<Schedule />} />
+              <Route path="/session" element={<Session />} />
+              <Route path="/tests" element={<Tests />} />
+              <Route path="/performance" element={<Performance />} />
+              <Route path="/autopsy" element={<Autopsy />} />
+              <Route path="/history" element={<History />} />
+              <Route path="/analytics" element={<Analytics />} />
+              <Route path="/telegram" element={<Telegram />} />
+              <Route path="/allen" element={<Allen />} />
+              <Route path="/settings" element={<Settings />} />
+              <Route path="*" element={<Dashboard />} />
+            </Routes>
+          </main>
+        </div>
       </div>
-      <div className="flex">
-        <Sidebar />
-        <main className="flex-1 min-w-0 px-6 md:px-10 py-8">
-          <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/schedule" element={<Schedule />} />
-            <Route path="/session" element={<Session />} />
-            <Route path="/tests" element={<Tests />} />
-            <Route path="/performance" element={<Performance />} />
-            <Route path="/autopsy" element={<Autopsy />} />
-            <Route path="/history" element={<History />} />
-            <Route path="/analytics" element={<Analytics />} />
-            <Route path="/telegram" element={<Telegram />} />
-            <Route path="/allen" element={<Allen />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route path="*" element={<Dashboard />} />
-          </Routes>
-        </main>
-      </div>
-    </div>
+    </BrowserRouter>
   );
 }
